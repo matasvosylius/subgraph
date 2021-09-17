@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: Super Tokens and Agreements (CFA, IDA) on the chapel network.
-repository: https://github.com/superfluid-finance/protocol-monorepo
+repository: https://github.com/matasvosylius/subgraph
 schema:
     file: ./schema.graphql
 dataSources:
