@@ -9,8 +9,8 @@ dataSources:
       network: chapel
       source:
           abi: ISuperTokenFactory
-          address: "0x14593daBa1Dd3892E3F700cDbD2D6613098984f9"
-          startBlock: 12331533
+          address: "0x399d05dbc549B66FA718f1679Ca72B65cE2Ea2bF"
+          startBlock: 12321533
       mapping:
           kind: ethereum/events
           apiVersion: 0.0.4
@@ -37,11 +37,11 @@ dataSources:
     #   network: chapel
     #   source:
     #       abi: ISuperfluid
-    #       address: "0x92876f8dd3C2c95B475a2F45E23213c40324A3cD"
-    #       startBlock: 12331533
+    #       address: "0x999Cc4cA447E41F7a91f200eDdD9B210E1Af66fD"
+    #       startBlock: 12321533
     #   mapping:
     #       kind: ethereum/events
-    #       apiVersion: 0.0.5
+    #       apiVersion: 0.0.4
     #       language: wasm/assemblyscript
     #       file: ./src/mappings/host.ts
           # entities:
@@ -58,8 +58,8 @@ dataSources:
       network: chapel
       source:
           abi: IConstantFlowAgreementV1
-          address: "0x57e95d368bf6DCC52cf226654aC3a7e0aCB3F030"
-          startBlock: 12331533
+          address: "0x4120C43f13E1D88FD7FB3BB6A72df43ed0Fc5e3B"
+          startBlock: 12321533
       mapping:
           kind: ethereum/events
           apiVersion: 0.0.4
@@ -83,9 +83,9 @@ dataSources:
       name: IInstantDistributionAgreementV1
       network: chapel
       source:
-        address: "0x9DB2eF382565F1b557A46020fc29A8729eef2929"
+        address: "0xEc44291012f906eaf7a52bADDb5a4Af642122d5f"
         abi: IInstantDistributionAgreementV1
-        startBlock: 12331533
+        startBlock: 12321533
       mapping:
         kind: ethereum/events
         apiVersion: 0.0.4
