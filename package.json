@@ -2,7 +2,7 @@
     "name": "subgraph",
     "version": "0.0.1",
     "description": "Subgraph for the Ethereum contracts",
-    "license": "MIT",
+    "license": "UNLICENSED",
     "scripts": {
         "getAbi": "node scripts/getAbi",
         "codegen": "graph codegen",
@@ -13,7 +13,7 @@
         "remove-local": "graph remove stream-test --node http://localhost:8020/",
         "deploy-local": "graph deploy stream-test --node http://localhost:8020/ --ipfs http://localhost:5001",
         "watch": "graph deploy stream-test --node http://localhost:8020/ --ipfs http://localhost:5001 --watch",
-        "deploy": "graph deploy $SUBGRAPH_NAME --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs --access-token $THEGRAPH_ACCESS_TOKEN",
+        "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ subgraph",
         "deploy:feature": "run-s deploy:feature:*",
         "prepare:feature:goerli": "mustache config/goerli.json subgraph.template.yaml > subgraph.yaml",
         "deploy:feature:goerli": "yarn prepare:feature:goerli && SUBGRAPH_NAME=/protocol-feature-goerli yarn deploy",
