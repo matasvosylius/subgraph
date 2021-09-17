@@ -1,0 +1,54 @@
+{
+    "name": "bsc-test-steam",
+    "version": "0.0.1",
+    "description": "Subgraph for the Ethereum contracts",
+    "license": "MIT",
+    "scripts": {
+        "getAbi": "node scripts/getAbi",
+        "codegen": "graph codegen",
+        "build": "graph build",
+        "test": "truffle test --network ganache",
+        "prepare-local": "mustache config/bsc_test.json subgraph.template.yaml > subgraph.yaml",
+        "create-local": "graph create stream-test --node http://localhost:8020/",
+        "remove-local": "graph remove stream-test --node http://localhost:8020/",
+        "deploy-local": "graph deploy stream-test --node http://localhost:8020/ --ipfs http://localhost:5001",
+        "watch": "graph deploy stream-test --node http://localhost:8020/ --ipfs http://localhost:5001 --watch",
+        "deploy": "graph deploy $SUBGRAPH_NAME --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs --access-token $THEGRAPH_ACCESS_TOKEN",
+        "deploy:feature": "run-s deploy:feature:*",
+        "prepare:feature:goerli": "mustache config/goerli.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:feature:goerli": "yarn prepare:feature:goerli && SUBGRAPH_NAME=/protocol-feature-goerli yarn deploy",
+        "deploy:dev": "run-s deploy:dev:*",
+        "prepare:dev:goerli": "mustache config/goerli.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:goerli": "yarn prepare:dev:goerli && SUBGRAPH_NAME=/protocol-dev-goerli yarn deploy",
+        "prepare:dev:rinkeby": "mustache config/rinkeby.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:rinkeby": "yarn prepare:dev:rinkeby && SUBGRAPH_NAME=/protocol-dev-rinkeby yarn deploy",
+        "prepare:dev:ropsten": "mustache config/ropsten.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:ropsten": "yarn prepare:dev:ropsten && SUBGRAPH_NAME=/protocol-dev-ropsten yarn deploy",
+        "prepare:dev:kovan": "mustache config/kovan.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:kovan": "yarn prepare:dev:kovan && SUBGRAPH_NAME=/protocol-dev-kovan yarn deploy",
+        "prepare:dev:mumbai": "mustache config/mumbai.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:mumbai": "yarn prepare:dev:mumbai && SUBGRAPH_NAME=/protocol-dev-mumbai yarn deploy",
+        "prepare:dev:xdai": "mustache config/xdai.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:xdai": "yarn prepare:dev:xdai && SUBGRAPH_NAME=/protocol-dev-xdai yarn deploy",
+        "prepare:dev:matic": "mustache config/matic.json subgraph.template.yaml > subgraph.yaml",
+        "deploy:dev:matic": "yarn prepare:dev:matic && SUBGRAPH_NAME=/protocol-dev-matic yarn deploy",
+        "lint": "run-s lint:*",
+        "lint:js-eslint": "eslint . --max-warnings=0 --report-unused-disable-directives --fix && echo '✔  Your .js files look good.'",
+        "pre-commit": "true"
+    },
+    "dependencies": {
+        "@decentral.ee/web3-helpers": "^0.5.3",
+        "@graphprotocol/graph-cli": "0.21.1",
+        "@graphprotocol/graph-ts": "0.20.0",
+        "@superfluid-finance/js-sdk": "0.5.3",
+        "ganache-time-traveler": "^1.0.16",
+        "mustache": "^4.2.0",
+        "truffle": "^5.4.5"
+    },
+    "workspaces": {
+        "nohoist": [
+            "**/@graphprotocol",
+            "**/@graphprotocol/**"
+        ]
+    }
+}

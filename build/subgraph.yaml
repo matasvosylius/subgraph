@@ -1,0 +1,129 @@
+specVersion: 0.0.2
+description: Super Tokens and Agreements (CFA, IDA) on the chapel network.
+repository: https://github.com/superfluid-finance/protocol-monorepo
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: SuperTokenFactory
+    network: chapel
+    source:
+      abi: ISuperTokenFactory
+      address: "0x14593daBa1Dd3892E3F700cDbD2D6613098984f9"
+      startBlock: 12331533
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: SuperTokenFactory/SuperTokenFactory.wasm
+      entities:
+        - Token
+        - SuperToken
+      abis:
+        - name: ISuperTokenFactory
+          file: SuperTokenFactory/abis/ISuperTokenFactory.json
+        - name: ISuperToken
+          file: SuperTokenFactory/abis/ISuperToken.json
+        - name: ISuperfluid
+          file: SuperTokenFactory/abis/ISuperfluid.json
+      eventHandlers:
+        - event: SuperTokenCreated(indexed address)
+          handler: handleSuperTokenCreated
+        - event: CustomSuperTokenCreated(indexed address)
+          handler: handleSuperTokenCreated
+  - kind: ethereum/contract
+    name: ConstantFlowAgreementV1
+    network: chapel
+    source:
+      abi: IConstantFlowAgreementV1
+      address: "0x57e95d368bf6DCC52cf226654aC3a7e0aCB3F030"
+      startBlock: 12331533
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ConstantFlowAgreementV1/ConstantFlowAgreementV1.wasm
+      entities:
+        - Transaction
+        - Account
+        - AccountWithToken
+        - Transfer
+        - Token
+      abis:
+        - name: IConstantFlowAgreementV1
+          file: ConstantFlowAgreementV1/abis/IConstantFlowAgreementV1.json
+        - name: ISuperToken
+          file: ConstantFlowAgreementV1/abis/ISuperToken.json
+      eventHandlers:
+        - event: FlowUpdated(indexed address,indexed address,indexed
+            address,int96,int256,int256,bytes)
+          handler: handleFlowUpdated
+  - kind: ethereum/contract
+    name: IInstantDistributionAgreementV1
+    network: chapel
+    source:
+      address: "0x9DB2eF382565F1b557A46020fc29A8729eef2929"
+      abi: IInstantDistributionAgreementV1
+      startBlock: 12331533
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: IInstantDistributionAgreementV1/IInstantDistributionAgreementV1.wasm
+      entities:
+        - IndexCreated
+        - IndexSubscribed
+        - IndexUnitsUpdated
+        - IndexUnsubscribed
+        - IndexUpdated
+        - SubscriptionApproved
+        - SubscriptionRevoked
+        - SubscriptionUnitsUpdated
+      abis:
+        - name: IInstantDistributionAgreementV1
+          file: IInstantDistributionAgreementV1/abis/IInstantDistributionAgreementV1.json
+      eventHandlers:
+        - event: IndexCreated(indexed address,indexed address,indexed uint32,bytes)
+          handler: handleIndexCreated
+        - event: IndexSubscribed(indexed address,indexed address,indexed uint32,address,bytes)
+          handler: handleIndexSubscribed
+        - event: IndexUnitsUpdated(indexed address,indexed address,indexed
+            uint32,address,uint128,bytes)
+          handler: handleIndexUnitsUpdated
+        - event: IndexUnsubscribed(indexed address,indexed address,indexed uint32,address,bytes)
+          handler: handleIndexUnsubscribed
+        - event: IndexUpdated(indexed address,indexed address,indexed
+            uint32,uint128,uint128,uint128,uint128,bytes)
+          handler: handleIndexUpdated
+        - event: SubscriptionApproved(indexed address,indexed address,address,uint32,bytes)
+          handler: handleSubscriptionApproved
+        - event: SubscriptionRevoked(indexed address,indexed address,address,uint32,bytes)
+          handler: handleSubscriptionRevoked
+        - event: SubscriptionUnitsUpdated(indexed address,indexed
+            address,address,uint32,uint128,bytes)
+          handler: handleSubscriptionUnitsUpdated
+templates:
+  - name: SuperToken
+    kind: ethereum/contract
+    network: chapel
+    source:
+      abi: ISuperToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: templates/SuperToken/SuperToken.wasm
+      entities:
+        - Token
+        - SuperToken
+        - AccountWithToken
+      abis:
+        - name: ISuperToken
+          file: SuperToken/abis/ISuperToken.json
+      eventHandlers:
+        - event: TokenUpgraded(indexed address,uint256)
+          handler: handleTokenUpgraded
+        - event: TokenDowngraded(indexed address,uint256)
+          handler: handleTokenDowngraded
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer

@@ -1,0 +1,4486 @@
+{
+  "contractName": "IConstantFlowAgreementV1",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "totalSenderFlowRate",
+          "type": "int256"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "totalReceiverFlowRate",
+          "type": "int256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "userData",
+          "type": "bytes"
+        }
+      ],
+      "name": "FlowUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "name": "realtimeBalanceOf",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "dynamicBalance",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deposit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "owedDeposit",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "agreementType",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deposit",
+          "type": "uint256"
+        }
+      ],
+      "name": "getMaximumFlowRateFromDeposit",
+      "outputs": [
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        }
+      ],
+      "name": "getDepositRequiredForFlowRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "deposit",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "createFlow",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "newCtx",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "updateFlow",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "newCtx",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        }
+      ],
+      "name": "getFlow",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deposit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "owedDeposit",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getFlowByID",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deposit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "owedDeposit",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getAccountFlowInfo",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deposit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "owedDeposit",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getNetFlow",
+      "outputs": [
+        {
+          "internalType": "int96",
+          "name": "flowRate",
+          "type": "int96"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperfluidToken",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "deleteFlow",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "newCtx",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"},{\"indexed\":false,\"internalType\":\"int256\",\"name\":\"totalSenderFlowRate\",\"type\":\"int256\"},{\"indexed\":false,\"internalType\":\"int256\",\"name\":\"totalReceiverFlowRate\",\"type\":\"int256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"userData\",\"type\":\"bytes\"}],\"name\":\"FlowUpdated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"agreementType\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"},{\"internalType\":\"bytes\",\"name\":\"ctx\",\"type\":\"bytes\"}],\"name\":\"createFlow\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"newCtx\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"ctx\",\"type\":\"bytes\"}],\"name\":\"deleteFlow\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"newCtx\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getAccountFlowInfo\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"},{\"internalType\":\"uint256\",\"name\":\"deposit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"owedDeposit\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"}],\"name\":\"getDepositRequiredForFlowRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"deposit\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"getFlow\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"},{\"internalType\":\"uint256\",\"name\":\"deposit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"owedDeposit\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"agreementId\",\"type\":\"bytes32\"}],\"name\":\"getFlowByID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"},{\"internalType\":\"uint256\",\"name\":\"deposit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"owedDeposit\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deposit\",\"type\":\"uint256\"}],\"name\":\"getMaximumFlowRateFromDeposit\",\"outputs\":[{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getNetFlow\",\"outputs\":[{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"}],\"name\":\"realtimeBalanceOf\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"dynamicBalance\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"deposit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"owedDeposit\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISuperfluidToken\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"int96\",\"name\":\"flowRate\",\"type\":\"int96\"},{\"internalType\":\"bytes\",\"name\":\"ctx\",\"type\":\"bytes\"}],\"name\":\"updateFlow\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"newCtx\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Superfluid\",\"details\":\"Superfluid's constant flow agreement interface\",\"events\":{\"FlowUpdated(address,address,address,int96,int256,int256,bytes)\":{\"details\":\"Flow updated event.\",\"params\":{\"flowRate\":\"Total flow rate in amount per second for the receiver.\",\"receiver\":\"Flow recipient address.\",\"sender\":\"Flow sender address.\",\"token\":\"Super token address.\",\"userData\":\"The user provided data.\"}}},\"kind\":\"dev\",\"methods\":{\"agreementType()\":{\"details\":\"ISuperAgreement.agreementType implementation\"},\"createFlow(address,address,int96,bytes)\":{\"details\":\"Create a flow betwen sender and receiver.\",\"params\":{\"flowRate\":\"New flow rate in amount per second. # App callbacks - AgreementCreated   - agreementId - can be used in getFlowByID   - agreementData - abi.encode(address flowSender, address flowReceiver) NOTE: - A deposit is taken as safety margin for the solvency agents. - A extra gas fee may be taken to pay for solvency agent liquidations.\",\"receiver\":\"Flow receiver address.\",\"token\":\"Super token address.\"}},\"deleteFlow(address,address,address,bytes)\":{\"details\":\"Delete the flow between sender and receiver\",\"params\":{\"ctx\":\"Context bytes.\",\"receiver\":\"Flow receiver address. # App callbacks - AgreementTerminated   - agreementId - can be used in getFlowByID   - agreementData - abi.encode(address flowSender, address flowReceiver) NOTE: - Both flow sender and receiver may delete the flow. - If Sender account is insolvent or in critical state, a solvency agent may   also terminate the agreement. - Gas fee may be returned to the sender.\",\"token\":\"Super token address.\"}},\"getAccountFlowInfo(address,address)\":{\"details\":\"Get the aggregated flow info of the account\",\"params\":{\"account\":\"Account for the query.\",\"token\":\"Super token address.\"}},\"getDepositRequiredForFlowRate(address,int96)\":{\"details\":\"Get the deposit required for creating the flow\",\"params\":{\"flowRate\":\"Flow rate to be tested\"}},\"getFlow(address,address,address)\":{\"details\":\"Get the flow data between `sender` and `receiver`.\",\"params\":{\"receiver\":\"Flow sender.\",\"sender\":\"Flow receiver.\",\"token\":\"Super token address.\"},\"returns\":{\"deposit\":\"The amount of deposit the flow.\",\"flowRate\":\"The flow rate.\",\"owedDeposit\":\"The amount of owed deposit of the flow.\",\"timestamp\":\"Timestamp of when the flow is updated.\"}},\"getFlowByID(address,bytes32)\":{\"details\":\"Get flow data using agreement ID\",\"params\":{\"agreementId\":\"The agreement ID.\",\"token\":\"Super token address.\"},\"returns\":{\"deposit\":\"The amount of deposit the flow.\",\"flowRate\":\"The flow rate.\",\"owedDeposit\":\"The amount of owed deposit of the flow.\",\"timestamp\":\"Timestamp of when the flow is updated.\"}},\"getMaximumFlowRateFromDeposit(address,uint256)\":{\"details\":\"Get the maximum flow rate allowed with the deposit\",\"params\":{\"deposit\":\"Deposit amount used for creating the flow\"}},\"getNetFlow(address,address)\":{\"details\":\"Get the net flow rate of the account\",\"params\":{\"account\":\"Account for the query.\",\"token\":\"Super token address.\"},\"returns\":{\"flowRate\":\"Flow rate.\"}},\"initialize()\":{\"details\":\"Initialize the agreement contract\"},\"realtimeBalanceOf(address,address,uint256)\":{\"details\":\"Calculate the real-time balance for the account of this agreement class.\",\"params\":{\"account\":\"Account the state belongs to\",\"time\":\"Future time used for the calculation.\"},\"returns\":{\"deposit\":\"Account deposit amount of this agreement.\",\"dynamicBalance\":\"Dynamic balance portion of real-time balance of this agreement.\",\"owedDeposit\":\"Account owed deposit amount of this agreement.\"}},\"updateFlow(address,address,int96,bytes)\":{\"details\":\"Update the flow rate between sender and receiver.\",\"params\":{\"flowRate\":\"New flow rate in amount per second. # App callbacks - AgreementUpdated   - agreementId - can be used in getFlowByID   - agreementData - abi.encode(address flowSender, address flowReceiver) NOTE: - Only the flow sender may update the flow rate. - Even if the flow rate is zero, the flow is not deleted from the system. - Deposit amount will be adjusted accordingly. - No new gas fee is charged.\",\"receiver\":\"Flow receiver address.\",\"token\":\"Super token address.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol\":\"IConstantFlowAgreementV1\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol\":{\"keccak256\":\"0xc47783262893c4600d412987ea47558b3b79336407462e6dff2117c04304177f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://ad36bacfb037ac85431f8a48f0c5a8d011d506a32c99ee3f3d0df23183dff024\",\"dweb:/ipfs/QmZqEon9aSVLcJ6QdB2oVA9SfhCz4E1h7q2CbRSxhvwp9x\"]},\"project:/contracts/interfaces/superfluid/ISuperAgreement.sol\":{\"keccak256\":\"0xcf8a33fadd5db47562156a11098623246efd1b46a2c3d28269767bcbb324fd66\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5c0273b4a136874ca4ad1b3f66b312adfa8e8ed48b301e4e979081d4923bb55f\",\"dweb:/ipfs/QmQvK9ZQggymJAftai2aA89EfQY2hX3MSpejNkr6kNf45m\"]},\"project:/contracts/interfaces/superfluid/ISuperfluidToken.sol\":{\"keccak256\":\"0xc658bc41894eecb8f64de68b92011c66b9ae2ec4d0373321c3f558a527f8ecc4\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5b107e8e8a6a87113cfb238b7a79efaf755af66188599aa71bc1d58799098894\",\"dweb:/ipfs/Qme1TxqHKLVsKwbrcjA7632VfUkDvbCBzZQyWGm8sRgwRk\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: AGPLv3\npragma solidity >= 0.7.0;\n\nimport { ISuperAgreement } from \"../superfluid/ISuperAgreement.sol\";\nimport { ISuperfluidToken } from \"../superfluid/ISuperfluidToken.sol\";\n\n\n/**\n * @dev Superfluid's constant flow agreement interface\n *\n * @author Superfluid\n */\nabstract contract IConstantFlowAgreementV1 is ISuperAgreement {\n\n    /// @dev ISuperAgreement.agreementType implementation\n    function agreementType() external override pure returns (bytes32) {\n        return keccak256(\"org.superfluid-finance.agreements.ConstantFlowAgreement.v1\");\n    }\n\n    /**\n     * @dev Get the maximum flow rate allowed with the deposit\n     * @param deposit Deposit amount used for creating the flow\n     */\n    function getMaximumFlowRateFromDeposit(\n        ISuperfluidToken token,\n        uint256 deposit)\n        external view virtual\n        returns (int96 flowRate);\n\n    /**\n     * @dev Get the deposit required for creating the flow\n     * @param flowRate Flow rate to be tested\n     */\n    function getDepositRequiredForFlowRate(\n        ISuperfluidToken token,\n        int96 flowRate)\n        external view virtual\n        returns (uint256 deposit);\n\n    /**\n     * @dev Create a flow betwen sender and receiver.\n     * @param token Super token address.\n     * @param receiver Flow receiver address.\n     * @param flowRate New flow rate in amount per second.\n     *\n     * # App callbacks\n     *\n     * - AgreementCreated\n     *   - agreementId - can be used in getFlowByID\n     *   - agreementData - abi.encode(address flowSender, address flowReceiver)\n     *\n     * NOTE:\n     * - A deposit is taken as safety margin for the solvency agents.\n     * - A extra gas fee may be taken to pay for solvency agent liquidations.\n     */\n    function createFlow(\n        ISuperfluidToken token,\n        address receiver,\n        int96 flowRate,\n        bytes calldata ctx\n    )\n        external virtual\n        returns(bytes memory newCtx);\n\n    /**\n     * @dev Update the flow rate between sender and receiver.\n     * @param token Super token address.\n     * @param receiver Flow receiver address.\n     * @param flowRate New flow rate in amount per second.\n     *\n     * # App callbacks\n     *\n     * - AgreementUpdated\n     *   - agreementId - can be used in getFlowByID\n     *   - agreementData - abi.encode(address flowSender, address flowReceiver)\n     *\n     * NOTE:\n     * - Only the flow sender may update the flow rate.\n     * - Even if the flow rate is zero, the flow is not deleted\n     * from the system.\n     * - Deposit amount will be adjusted accordingly.\n     * - No new gas fee is charged.\n     */\n    function updateFlow(\n        ISuperfluidToken token,\n        address receiver,\n        int96 flowRate,\n        bytes calldata ctx\n    )\n        external virtual\n        returns(bytes memory newCtx);\n\n\n    /**\n     * @dev Get the flow data between `sender` and `receiver`.\n     * @param token Super token address.\n     * @param sender Flow receiver.\n     * @param receiver Flow sender.\n     * @return timestamp Timestamp of when the flow is updated.\n     * @return flowRate The flow rate.\n     * @return deposit The amount of deposit the flow.\n     * @return owedDeposit The amount of owed deposit of the flow.\n     */\n    function getFlow(\n        ISuperfluidToken token,\n        address sender,\n        address receiver\n    )\n        external view virtual\n        returns (\n            uint256 timestamp,\n            int96 flowRate,\n            uint256 deposit,\n            uint256 owedDeposit\n        );\n\n    /**\n     * @dev Get flow data using agreement ID\n     * @param token Super token address.\n     * @param agreementId The agreement ID.\n     * @return timestamp Timestamp of when the flow is updated.\n     * @return flowRate The flow rate.\n     * @return deposit The amount of deposit the flow.\n     * @return owedDeposit The amount of owed deposit of the flow.\n     */\n    function getFlowByID(\n       ISuperfluidToken token,\n       bytes32 agreementId\n    )\n        external view virtual\n        returns (\n            uint256 timestamp,\n            int96 flowRate,\n            uint256 deposit,\n            uint256 owedDeposit\n        );\n\n    /**\n     * @dev Get the aggregated flow info of the account\n     * @param token Super token address.\n    * @param account Account for the query.\n    */\n    function getAccountFlowInfo(\n        ISuperfluidToken token,\n        address account\n    )\n        external view virtual\n        returns (\n            uint256 timestamp,\n            int96 flowRate,\n            uint256 deposit,\n            uint256 owedDeposit);\n\n    /**\n     * @dev Get the net flow rate of the account\n     * @param token Super token address.\n     * @param account Account for the query.\n     * @return flowRate Flow rate.\n     */\n    function getNetFlow(\n        ISuperfluidToken token,\n        address account\n    )\n        external view virtual\n        returns (int96 flowRate);\n\n    /**\n     * @dev Delete the flow between sender and receiver\n     * @param token Super token address.\n     * @param ctx Context bytes.\n     * @param receiver Flow receiver address.\n     *\n     * # App callbacks\n     *\n     * - AgreementTerminated\n     *   - agreementId - can be used in getFlowByID\n     *   - agreementData - abi.encode(address flowSender, address flowReceiver)\n     *\n     * NOTE:\n     * - Both flow sender and receiver may delete the flow.\n     * - If Sender account is insolvent or in critical state, a solvency agent may\n     *   also terminate the agreement.\n     * - Gas fee may be returned to the sender.\n     */\n    function deleteFlow(\n        ISuperfluidToken token,\n        address sender,\n        address receiver,\n        bytes calldata ctx\n    )\n        external virtual\n        returns(bytes memory newCtx);\n\n     /**\n      * @dev Flow updated event.\n      * @param token Super token address.\n      * @param sender Flow sender address.\n      * @param receiver Flow recipient address.\n      * @param flowRate Flow rate in amount per second for this flow.\n      * @param flowRate Total flow rate in amount per second for the sender.\n      * @param flowRate Total flow rate in amount per second for the receiver.\n      * @param userData The user provided data.\n      */\n     event FlowUpdated(\n         ISuperfluidToken indexed token,\n         address indexed sender,\n         address indexed receiver,\n         int96 flowRate,\n         int256 totalSenderFlowRate,\n         int256 totalReceiverFlowRate,\n         bytes userData\n     );\n\n}\n",
+  "sourcePath": "/Users/matasvosylius/Matas/superhow/projektai/StreamPay/StreamPay-contract/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
+    "exportedSymbols": {
+      "IConstantFlowAgreementV1": [
+        10827
+      ],
+      "ISuperAgreement": [
+        11521
+      ],
+      "ISuperfluidToken": [
+        12797
+      ]
+    },
+    "id": 10828,
+    "license": "AGPLv3",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10668,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:25:30"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/superfluid/ISuperAgreement.sol",
+        "file": "../superfluid/ISuperAgreement.sol",
+        "id": 10670,
+        "nodeType": "ImportDirective",
+        "scope": 10828,
+        "sourceUnit": 11522,
+        "src": "62:68:30",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 10669,
+              "name": "ISuperAgreement",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "71:15:30",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+        "file": "../superfluid/ISuperfluidToken.sol",
+        "id": 10672,
+        "nodeType": "ImportDirective",
+        "scope": 10828,
+        "sourceUnit": 12798,
+        "src": "131:70:30",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 10671,
+              "name": "ISuperfluidToken",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "140:16:30",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 10674,
+              "name": "ISuperAgreement",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 11521,
+              "src": "338:15:30",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ISuperAgreement_$11521",
+                "typeString": "contract ISuperAgreement"
+              }
+            },
+            "id": 10675,
+            "nodeType": "InheritanceSpecifier",
+            "src": "338:15:30"
+          }
+        ],
+        "contractDependencies": [
+          11521
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 10673,
+          "nodeType": "StructuredDocumentation",
+          "src": "204:87:30",
+          "text": " @dev Superfluid's constant flow agreement interface\n @author Superfluid"
+        },
+        "fullyImplemented": false,
+        "id": 10827,
+        "linearizedBaseContracts": [
+          10827,
+          11521
+        ],
+        "name": "IConstantFlowAgreementV1",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "baseFunctions": [
+              11504
+            ],
+            "body": {
+              "id": 10686,
+              "nodeType": "Block",
+              "src": "485:95:30",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "hexValue": "6f72672e7375706572666c7569642d66696e616e63652e61677265656d656e74732e436f6e7374616e74466c6f7741677265656d656e742e7631",
+                        "id": 10683,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "512:60:30",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_a9214cc96615e0085d3bb077758db69497dc2dce3b2b1e97bc93c3d18d83efd3",
+                          "typeString": "literal_string \"org.superfluid-finance.agreements.ConstantFlowAgreement.v1\""
+                        },
+                        "value": "org.superfluid-finance.agreements.ConstantFlowAgreement.v1"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_a9214cc96615e0085d3bb077758db69497dc2dce3b2b1e97bc93c3d18d83efd3",
+                          "typeString": "literal_string \"org.superfluid-finance.agreements.ConstantFlowAgreement.v1\""
+                        }
+                      ],
+                      "id": 10682,
+                      "name": "keccak256",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4294967288,
+                      "src": "502:9:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                        "typeString": "function (bytes memory) pure returns (bytes32)"
+                      }
+                    },
+                    "id": 10684,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "502:71:30",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 10681,
+                  "id": 10685,
+                  "nodeType": "Return",
+                  "src": "495:78:30"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 10676,
+              "nodeType": "StructuredDocumentation",
+              "src": "361:53:30",
+              "text": "@dev ISuperAgreement.agreementType implementation"
+            },
+            "functionSelector": "7730599e",
+            "id": 10687,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "agreementType",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 10678,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "453:8:30"
+            },
+            "parameters": {
+              "id": 10677,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "441:2:30"
+            },
+            "returnParameters": {
+              "id": 10681,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10680,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10687,
+                  "src": "476:7:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10679,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "476:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "475:9:30"
+            },
+            "scope": 10827,
+            "src": "419:161:30",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10688,
+              "nodeType": "StructuredDocumentation",
+              "src": "586:138:30",
+              "text": " @dev Get the maximum flow rate allowed with the deposit\n @param deposit Deposit amount used for creating the flow"
+            },
+            "functionSelector": "0602f7db",
+            "id": 10697,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMaximumFlowRateFromDeposit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10693,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10690,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10697,
+                  "src": "777:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10689,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "777:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10692,
+                  "mutability": "mutable",
+                  "name": "deposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10697,
+                  "src": "809:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10691,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "809:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "767:58:30"
+            },
+            "returnParameters": {
+              "id": 10696,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10695,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10697,
+                  "src": "873:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10694,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "873:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "872:16:30"
+            },
+            "scope": 10827,
+            "src": "729:160:30",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10698,
+              "nodeType": "StructuredDocumentation",
+              "src": "895:116:30",
+              "text": " @dev Get the deposit required for creating the flow\n @param flowRate Flow rate to be tested"
+            },
+            "functionSelector": "8d997f6e",
+            "id": 10707,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDepositRequiredForFlowRate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10703,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10700,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10707,
+                  "src": "1064:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10699,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "1064:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10702,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10707,
+                  "src": "1096:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10701,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1096:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1054:57:30"
+            },
+            "returnParameters": {
+              "id": 10706,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10705,
+                  "mutability": "mutable",
+                  "name": "deposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10707,
+                  "src": "1159:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10704,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1159:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1158:17:30"
+            },
+            "scope": 10827,
+            "src": "1016:160:30",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10708,
+              "nodeType": "StructuredDocumentation",
+              "src": "1182:574:30",
+              "text": " @dev Create a flow betwen sender and receiver.\n @param token Super token address.\n @param receiver Flow receiver address.\n @param flowRate New flow rate in amount per second.\n # App callbacks\n - AgreementCreated\n   - agreementId - can be used in getFlowByID\n   - agreementData - abi.encode(address flowSender, address flowReceiver)\n NOTE:\n - A deposit is taken as safety margin for the solvency agents.\n - A extra gas fee may be taken to pay for solvency agent liquidations."
+            },
+            "functionSelector": "62fc305e",
+            "id": 10721,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createFlow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10717,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10710,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10721,
+                  "src": "1790:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10709,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "1790:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10712,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10721,
+                  "src": "1822:16:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10711,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1822:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10714,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10721,
+                  "src": "1848:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10713,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1848:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10716,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10721,
+                  "src": "1872:18:30",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10715,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1872:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1780:116:30"
+            },
+            "returnParameters": {
+              "id": 10720,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10719,
+                  "mutability": "mutable",
+                  "name": "newCtx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10721,
+                  "src": "1938:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10718,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1938:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1937:21:30"
+            },
+            "scope": 10827,
+            "src": "1761:198:30",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10722,
+              "nodeType": "StructuredDocumentation",
+              "src": "1965:668:30",
+              "text": " @dev Update the flow rate between sender and receiver.\n @param token Super token address.\n @param receiver Flow receiver address.\n @param flowRate New flow rate in amount per second.\n # App callbacks\n - AgreementUpdated\n   - agreementId - can be used in getFlowByID\n   - agreementData - abi.encode(address flowSender, address flowReceiver)\n NOTE:\n - Only the flow sender may update the flow rate.\n - Even if the flow rate is zero, the flow is not deleted\n from the system.\n - Deposit amount will be adjusted accordingly.\n - No new gas fee is charged."
+            },
+            "functionSelector": "50209a62",
+            "id": 10735,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateFlow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10731,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10724,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10735,
+                  "src": "2667:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10723,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "2667:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10726,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10735,
+                  "src": "2699:16:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10725,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2699:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10728,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10735,
+                  "src": "2725:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10727,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2725:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10730,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10735,
+                  "src": "2749:18:30",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10729,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2749:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2657:116:30"
+            },
+            "returnParameters": {
+              "id": 10734,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10733,
+                  "mutability": "mutable",
+                  "name": "newCtx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10735,
+                  "src": "2815:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10732,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2815:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2814:21:30"
+            },
+            "scope": 10827,
+            "src": "2638:198:30",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10736,
+              "nodeType": "StructuredDocumentation",
+              "src": "2843:412:30",
+              "text": " @dev Get the flow data between `sender` and `receiver`.\n @param token Super token address.\n @param sender Flow receiver.\n @param receiver Flow sender.\n @return timestamp Timestamp of when the flow is updated.\n @return flowRate The flow rate.\n @return deposit The amount of deposit the flow.\n @return owedDeposit The amount of owed deposit of the flow."
+            },
+            "functionSelector": "e6a1e888",
+            "id": 10753,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFlow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10743,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10738,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3286:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10737,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "3286:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10740,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3318:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10739,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3318:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10742,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3342:16:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10741,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3342:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3276:88:30"
+            },
+            "returnParameters": {
+              "id": 10752,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10745,
+                  "mutability": "mutable",
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3425:17:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10744,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3425:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10747,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3456:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10746,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3456:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10749,
+                  "mutability": "mutable",
+                  "name": "deposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3484:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10748,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3484:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10751,
+                  "mutability": "mutable",
+                  "name": "owedDeposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10753,
+                  "src": "3513:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10750,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3513:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3411:131:30"
+            },
+            "scope": 10827,
+            "src": "3260:283:30",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10754,
+              "nodeType": "StructuredDocumentation",
+              "src": "3549:366:30",
+              "text": " @dev Get flow data using agreement ID\n @param token Super token address.\n @param agreementId The agreement ID.\n @return timestamp Timestamp of when the flow is updated.\n @return flowRate The flow rate.\n @return deposit The amount of deposit the flow.\n @return owedDeposit The amount of owed deposit of the flow."
+            },
+            "functionSelector": "aabd2668",
+            "id": 10769,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFlowByID",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10759,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10756,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10769,
+                  "src": "3949:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10755,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "3949:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10758,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10769,
+                  "src": "3980:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10757,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3980:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3940:65:30"
+            },
+            "returnParameters": {
+              "id": 10768,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10761,
+                  "mutability": "mutable",
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10769,
+                  "src": "4066:17:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10760,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4066:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10763,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10769,
+                  "src": "4097:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10762,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4097:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10765,
+                  "mutability": "mutable",
+                  "name": "deposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10769,
+                  "src": "4125:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10764,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4125:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10767,
+                  "mutability": "mutable",
+                  "name": "owedDeposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10769,
+                  "src": "4154:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10766,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4154:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4052:131:30"
+            },
+            "scope": 10827,
+            "src": "3920:264:30",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10770,
+              "nodeType": "StructuredDocumentation",
+              "src": "4190:151:30",
+              "text": " @dev Get the aggregated flow info of the account\n @param token Super token address.\n @param account Account for the query."
+            },
+            "functionSelector": "0f1ac495",
+            "id": 10785,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAccountFlowInfo",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10775,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10772,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10785,
+                  "src": "4383:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10771,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "4383:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10774,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10785,
+                  "src": "4415:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10773,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4415:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4373:63:30"
+            },
+            "returnParameters": {
+              "id": 10784,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10777,
+                  "mutability": "mutable",
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10785,
+                  "src": "4497:17:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10776,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4497:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10779,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10785,
+                  "src": "4528:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10778,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4528:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10781,
+                  "mutability": "mutable",
+                  "name": "deposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10785,
+                  "src": "4556:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10780,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4556:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10783,
+                  "mutability": "mutable",
+                  "name": "owedDeposit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10785,
+                  "src": "4585:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10782,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4585:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4483:122:30"
+            },
+            "scope": 10827,
+            "src": "4346:260:30",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10786,
+              "nodeType": "StructuredDocumentation",
+              "src": "4612:181:30",
+              "text": " @dev Get the net flow rate of the account\n @param token Super token address.\n @param account Account for the query.\n @return flowRate Flow rate."
+            },
+            "functionSelector": "e8e7e2d1",
+            "id": 10795,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNetFlow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10791,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10788,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10795,
+                  "src": "4827:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10787,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "4827:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10790,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10795,
+                  "src": "4859:15:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10789,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4859:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4817:63:30"
+            },
+            "returnParameters": {
+              "id": 10794,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10793,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10795,
+                  "src": "4928:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10792,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4928:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4927:16:30"
+            },
+            "scope": 10827,
+            "src": "4798:146:30",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10796,
+              "nodeType": "StructuredDocumentation",
+              "src": "4950:635:30",
+              "text": " @dev Delete the flow between sender and receiver\n @param token Super token address.\n @param ctx Context bytes.\n @param receiver Flow receiver address.\n # App callbacks\n - AgreementTerminated\n   - agreementId - can be used in getFlowByID\n   - agreementData - abi.encode(address flowSender, address flowReceiver)\n NOTE:\n - Both flow sender and receiver may delete the flow.\n - If Sender account is insolvent or in critical state, a solvency agent may\n   also terminate the agreement.\n - Gas fee may be returned to the sender."
+            },
+            "functionSelector": "b4b333c6",
+            "id": 10809,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deleteFlow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10805,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10798,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "5619:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10797,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "5619:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10800,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "5651:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10799,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5651:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10802,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "5675:16:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10801,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5675:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10804,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "5701:18:30",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10803,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5701:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5609:116:30"
+            },
+            "returnParameters": {
+              "id": 10808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10807,
+                  "mutability": "mutable",
+                  "name": "newCtx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "5767:19:30",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10806,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5767:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5766:21:30"
+            },
+            "scope": 10827,
+            "src": "5590:198:30",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 10810,
+              "nodeType": "StructuredDocumentation",
+              "src": "5795:452:30",
+              "text": " @dev Flow updated event.\n @param token Super token address.\n @param sender Flow sender address.\n @param receiver Flow recipient address.\n @param flowRate Flow rate in amount per second for this flow.\n @param flowRate Total flow rate in amount per second for the sender.\n @param flowRate Total flow rate in amount per second for the receiver.\n @param userData The user provided data."
+            },
+            "id": 10826,
+            "name": "FlowUpdated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 10825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10812,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6281:30:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                    "typeString": "contract ISuperfluidToken"
+                  },
+                  "typeName": {
+                    "id": 10811,
+                    "name": "ISuperfluidToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 12797,
+                    "src": "6281:16:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$12797",
+                      "typeString": "contract ISuperfluidToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10814,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6322:22:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10813,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6322:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10816,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6355:24:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10815,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6355:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10818,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "flowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6390:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 10817,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6390:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10820,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "totalSenderFlowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6415:26:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 10819,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6415:6:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10822,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "totalReceiverFlowRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6452:28:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 10821,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6452:6:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10824,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "userData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10826,
+                  "src": "6491:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10823,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6491:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6270:242:30"
+            },
+            "src": "6253:260:30"
+          }
+        ],
+        "scope": 10828,
+        "src": "292:6224:30"
+      }
+    ],
+    "src": "35:6482:30"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
+      "exportedSymbols": {
+        "IConstantFlowAgreementV1": [
+          10827
+        ],
+        "ISuperAgreement": [
+          11521
+        ],
+        "ISuperfluidToken": [
+          12797
+        ]
+      },
+      "license": "AGPLv3"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.7",
+            ".0"
+          ]
+        },
+        "id": 10668,
+        "name": "PragmaDirective",
+        "src": "35:25:30"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 11522,
+          "absolutePath": "project:/contracts/interfaces/superfluid/ISuperAgreement.sol",
+          "file": "../superfluid/ISuperAgreement.sol",
+          "scope": 10828,
+          "symbolAliases": [
+            {
+              "foreign": {
+                "attributes": {
+                  "overloadedDeclarations": [
+                    null
+                  ],
+                  "value": "ISuperAgreement"
+                },
+                "id": 10669,
+                "name": "Identifier",
+                "src": "71:15:30"
+              }
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 10670,
+        "name": "ImportDirective",
+        "src": "62:68:30"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 12798,
+          "absolutePath": "project:/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+          "file": "../superfluid/ISuperfluidToken.sol",
+          "scope": 10828,
+          "symbolAliases": [
+            {
+              "foreign": {
+                "attributes": {
+                  "overloadedDeclarations": [
+                    null
+                  ],
+                  "value": "ISuperfluidToken"
+                },
+                "id": 10671,
+                "name": "Identifier",
+                "src": "140:16:30"
+              }
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 10672,
+        "name": "ImportDirective",
+        "src": "131:70:30"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            11521
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            10827,
+            11521
+          ],
+          "name": "IConstantFlowAgreementV1",
+          "scope": 10828
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @dev Superfluid's constant flow agreement interface\n @author Superfluid"
+            },
+            "id": 10673,
+            "name": "StructuredDocumentation",
+            "src": "204:87:30"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "ISuperAgreement",
+                  "referencedDeclaration": 11521,
+                  "type": "contract ISuperAgreement"
+                },
+                "id": 10674,
+                "name": "UserDefinedTypeName",
+                "src": "338:15:30"
+              }
+            ],
+            "id": 10675,
+            "name": "InheritanceSpecifier",
+            "src": "338:15:30"
+          },
+          {
+            "attributes": {
+              "baseFunctions": [
+                11504
+              ],
+              "functionSelector": "7730599e",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "agreementType",
+              "scope": 10827,
+              "stateMutability": "pure",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@dev ISuperAgreement.agreementType implementation"
+                },
+                "id": 10676,
+                "name": "StructuredDocumentation",
+                "src": "361:53:30"
+              },
+              {
+                "attributes": {
+                  "overrides": [
+                    null
+                  ]
+                },
+                "id": 10678,
+                "name": "OverrideSpecifier",
+                "src": "453:8:30"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10677,
+                "name": "ParameterList",
+                "src": "441:2:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 10687,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 10679,
+                        "name": "ElementaryTypeName",
+                        "src": "476:7:30"
+                      }
+                    ],
+                    "id": 10680,
+                    "name": "VariableDeclaration",
+                    "src": "476:7:30"
+                  }
+                ],
+                "id": 10681,
+                "name": "ParameterList",
+                "src": "475:9:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 10681
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "bytes32",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_a9214cc96615e0085d3bb077758db69497dc2dce3b2b1e97bc93c3d18d83efd3",
+                                  "typeString": "literal_string \"org.superfluid-finance.agreements.ConstantFlowAgreement.v1\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4294967288,
+                              "type": "function (bytes memory) pure returns (bytes32)",
+                              "value": "keccak256"
+                            },
+                            "id": 10682,
+                            "name": "Identifier",
+                            "src": "502:9:30"
+                          },
+                          {
+                            "attributes": {
+                              "hexvalue": "6f72672e7375706572666c7569642d66696e616e63652e61677265656d656e74732e436f6e7374616e74466c6f7741677265656d656e742e7631",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "token": "string",
+                              "type": "literal_string \"org.superfluid-finance.agreements.ConstantFlowAgreement.v1\"",
+                              "value": "org.superfluid-finance.agreements.ConstantFlowAgreement.v1"
+                            },
+                            "id": 10683,
+                            "name": "Literal",
+                            "src": "512:60:30"
+                          }
+                        ],
+                        "id": 10684,
+                        "name": "FunctionCall",
+                        "src": "502:71:30"
+                      }
+                    ],
+                    "id": 10685,
+                    "name": "Return",
+                    "src": "495:78:30"
+                  }
+                ],
+                "id": 10686,
+                "name": "Block",
+                "src": "485:95:30"
+              }
+            ],
+            "id": 10687,
+            "name": "FunctionDefinition",
+            "src": "419:161:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "0602f7db",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getMaximumFlowRateFromDeposit",
+              "scope": 10827,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get the maximum flow rate allowed with the deposit\n @param deposit Deposit amount used for creating the flow"
+                },
+                "id": 10688,
+                "name": "StructuredDocumentation",
+                "src": "586:138:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10697,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10689,
+                        "name": "UserDefinedTypeName",
+                        "src": "777:16:30"
+                      }
+                    ],
+                    "id": 10690,
+                    "name": "VariableDeclaration",
+                    "src": "777:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "deposit",
+                      "scope": 10697,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10691,
+                        "name": "ElementaryTypeName",
+                        "src": "809:7:30"
+                      }
+                    ],
+                    "id": 10692,
+                    "name": "VariableDeclaration",
+                    "src": "809:15:30"
+                  }
+                ],
+                "id": 10693,
+                "name": "ParameterList",
+                "src": "767:58:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10697,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10694,
+                        "name": "ElementaryTypeName",
+                        "src": "873:5:30"
+                      }
+                    ],
+                    "id": 10695,
+                    "name": "VariableDeclaration",
+                    "src": "873:14:30"
+                  }
+                ],
+                "id": 10696,
+                "name": "ParameterList",
+                "src": "872:16:30"
+              }
+            ],
+            "id": 10697,
+            "name": "FunctionDefinition",
+            "src": "729:160:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "8d997f6e",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getDepositRequiredForFlowRate",
+              "scope": 10827,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get the deposit required for creating the flow\n @param flowRate Flow rate to be tested"
+                },
+                "id": 10698,
+                "name": "StructuredDocumentation",
+                "src": "895:116:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10707,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10699,
+                        "name": "UserDefinedTypeName",
+                        "src": "1064:16:30"
+                      }
+                    ],
+                    "id": 10700,
+                    "name": "VariableDeclaration",
+                    "src": "1064:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10707,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10701,
+                        "name": "ElementaryTypeName",
+                        "src": "1096:5:30"
+                      }
+                    ],
+                    "id": 10702,
+                    "name": "VariableDeclaration",
+                    "src": "1096:14:30"
+                  }
+                ],
+                "id": 10703,
+                "name": "ParameterList",
+                "src": "1054:57:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "deposit",
+                      "scope": 10707,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10704,
+                        "name": "ElementaryTypeName",
+                        "src": "1159:7:30"
+                      }
+                    ],
+                    "id": 10705,
+                    "name": "VariableDeclaration",
+                    "src": "1159:15:30"
+                  }
+                ],
+                "id": 10706,
+                "name": "ParameterList",
+                "src": "1158:17:30"
+              }
+            ],
+            "id": 10707,
+            "name": "FunctionDefinition",
+            "src": "1016:160:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "62fc305e",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "createFlow",
+              "scope": 10827,
+              "stateMutability": "nonpayable",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Create a flow betwen sender and receiver.\n @param token Super token address.\n @param receiver Flow receiver address.\n @param flowRate New flow rate in amount per second.\n # App callbacks\n - AgreementCreated\n   - agreementId - can be used in getFlowByID\n   - agreementData - abi.encode(address flowSender, address flowReceiver)\n NOTE:\n - A deposit is taken as safety margin for the solvency agents.\n - A extra gas fee may be taken to pay for solvency agent liquidations."
+                },
+                "id": 10708,
+                "name": "StructuredDocumentation",
+                "src": "1182:574:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10721,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10709,
+                        "name": "UserDefinedTypeName",
+                        "src": "1790:16:30"
+                      }
+                    ],
+                    "id": 10710,
+                    "name": "VariableDeclaration",
+                    "src": "1790:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "receiver",
+                      "scope": 10721,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10711,
+                        "name": "ElementaryTypeName",
+                        "src": "1822:7:30"
+                      }
+                    ],
+                    "id": 10712,
+                    "name": "VariableDeclaration",
+                    "src": "1822:16:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10721,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10713,
+                        "name": "ElementaryTypeName",
+                        "src": "1848:5:30"
+                      }
+                    ],
+                    "id": 10714,
+                    "name": "VariableDeclaration",
+                    "src": "1848:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "ctx",
+                      "scope": 10721,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10715,
+                        "name": "ElementaryTypeName",
+                        "src": "1872:5:30"
+                      }
+                    ],
+                    "id": 10716,
+                    "name": "VariableDeclaration",
+                    "src": "1872:18:30"
+                  }
+                ],
+                "id": 10717,
+                "name": "ParameterList",
+                "src": "1780:116:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "newCtx",
+                      "scope": 10721,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10718,
+                        "name": "ElementaryTypeName",
+                        "src": "1938:5:30"
+                      }
+                    ],
+                    "id": 10719,
+                    "name": "VariableDeclaration",
+                    "src": "1938:19:30"
+                  }
+                ],
+                "id": 10720,
+                "name": "ParameterList",
+                "src": "1937:21:30"
+              }
+            ],
+            "id": 10721,
+            "name": "FunctionDefinition",
+            "src": "1761:198:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "50209a62",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "updateFlow",
+              "scope": 10827,
+              "stateMutability": "nonpayable",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Update the flow rate between sender and receiver.\n @param token Super token address.\n @param receiver Flow receiver address.\n @param flowRate New flow rate in amount per second.\n # App callbacks\n - AgreementUpdated\n   - agreementId - can be used in getFlowByID\n   - agreementData - abi.encode(address flowSender, address flowReceiver)\n NOTE:\n - Only the flow sender may update the flow rate.\n - Even if the flow rate is zero, the flow is not deleted\n from the system.\n - Deposit amount will be adjusted accordingly.\n - No new gas fee is charged."
+                },
+                "id": 10722,
+                "name": "StructuredDocumentation",
+                "src": "1965:668:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10735,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10723,
+                        "name": "UserDefinedTypeName",
+                        "src": "2667:16:30"
+                      }
+                    ],
+                    "id": 10724,
+                    "name": "VariableDeclaration",
+                    "src": "2667:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "receiver",
+                      "scope": 10735,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10725,
+                        "name": "ElementaryTypeName",
+                        "src": "2699:7:30"
+                      }
+                    ],
+                    "id": 10726,
+                    "name": "VariableDeclaration",
+                    "src": "2699:16:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10735,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10727,
+                        "name": "ElementaryTypeName",
+                        "src": "2725:5:30"
+                      }
+                    ],
+                    "id": 10728,
+                    "name": "VariableDeclaration",
+                    "src": "2725:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "ctx",
+                      "scope": 10735,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10729,
+                        "name": "ElementaryTypeName",
+                        "src": "2749:5:30"
+                      }
+                    ],
+                    "id": 10730,
+                    "name": "VariableDeclaration",
+                    "src": "2749:18:30"
+                  }
+                ],
+                "id": 10731,
+                "name": "ParameterList",
+                "src": "2657:116:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "newCtx",
+                      "scope": 10735,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10732,
+                        "name": "ElementaryTypeName",
+                        "src": "2815:5:30"
+                      }
+                    ],
+                    "id": 10733,
+                    "name": "VariableDeclaration",
+                    "src": "2815:19:30"
+                  }
+                ],
+                "id": 10734,
+                "name": "ParameterList",
+                "src": "2814:21:30"
+              }
+            ],
+            "id": 10735,
+            "name": "FunctionDefinition",
+            "src": "2638:198:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "e6a1e888",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getFlow",
+              "scope": 10827,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get the flow data between `sender` and `receiver`.\n @param token Super token address.\n @param sender Flow receiver.\n @param receiver Flow sender.\n @return timestamp Timestamp of when the flow is updated.\n @return flowRate The flow rate.\n @return deposit The amount of deposit the flow.\n @return owedDeposit The amount of owed deposit of the flow."
+                },
+                "id": 10736,
+                "name": "StructuredDocumentation",
+                "src": "2843:412:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10737,
+                        "name": "UserDefinedTypeName",
+                        "src": "3286:16:30"
+                      }
+                    ],
+                    "id": 10738,
+                    "name": "VariableDeclaration",
+                    "src": "3286:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "sender",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10739,
+                        "name": "ElementaryTypeName",
+                        "src": "3318:7:30"
+                      }
+                    ],
+                    "id": 10740,
+                    "name": "VariableDeclaration",
+                    "src": "3318:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "receiver",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10741,
+                        "name": "ElementaryTypeName",
+                        "src": "3342:7:30"
+                      }
+                    ],
+                    "id": 10742,
+                    "name": "VariableDeclaration",
+                    "src": "3342:16:30"
+                  }
+                ],
+                "id": 10743,
+                "name": "ParameterList",
+                "src": "3276:88:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "timestamp",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10744,
+                        "name": "ElementaryTypeName",
+                        "src": "3425:7:30"
+                      }
+                    ],
+                    "id": 10745,
+                    "name": "VariableDeclaration",
+                    "src": "3425:17:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10746,
+                        "name": "ElementaryTypeName",
+                        "src": "3456:5:30"
+                      }
+                    ],
+                    "id": 10747,
+                    "name": "VariableDeclaration",
+                    "src": "3456:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "deposit",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10748,
+                        "name": "ElementaryTypeName",
+                        "src": "3484:7:30"
+                      }
+                    ],
+                    "id": 10749,
+                    "name": "VariableDeclaration",
+                    "src": "3484:15:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "owedDeposit",
+                      "scope": 10753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10750,
+                        "name": "ElementaryTypeName",
+                        "src": "3513:7:30"
+                      }
+                    ],
+                    "id": 10751,
+                    "name": "VariableDeclaration",
+                    "src": "3513:19:30"
+                  }
+                ],
+                "id": 10752,
+                "name": "ParameterList",
+                "src": "3411:131:30"
+              }
+            ],
+            "id": 10753,
+            "name": "FunctionDefinition",
+            "src": "3260:283:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "aabd2668",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getFlowByID",
+              "scope": 10827,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get flow data using agreement ID\n @param token Super token address.\n @param agreementId The agreement ID.\n @return timestamp Timestamp of when the flow is updated.\n @return flowRate The flow rate.\n @return deposit The amount of deposit the flow.\n @return owedDeposit The amount of owed deposit of the flow."
+                },
+                "id": 10754,
+                "name": "StructuredDocumentation",
+                "src": "3549:366:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10755,
+                        "name": "UserDefinedTypeName",
+                        "src": "3949:16:30"
+                      }
+                    ],
+                    "id": 10756,
+                    "name": "VariableDeclaration",
+                    "src": "3949:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "agreementId",
+                      "scope": 10769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 10757,
+                        "name": "ElementaryTypeName",
+                        "src": "3980:7:30"
+                      }
+                    ],
+                    "id": 10758,
+                    "name": "VariableDeclaration",
+                    "src": "3980:19:30"
+                  }
+                ],
+                "id": 10759,
+                "name": "ParameterList",
+                "src": "3940:65:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "timestamp",
+                      "scope": 10769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10760,
+                        "name": "ElementaryTypeName",
+                        "src": "4066:7:30"
+                      }
+                    ],
+                    "id": 10761,
+                    "name": "VariableDeclaration",
+                    "src": "4066:17:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10762,
+                        "name": "ElementaryTypeName",
+                        "src": "4097:5:30"
+                      }
+                    ],
+                    "id": 10763,
+                    "name": "VariableDeclaration",
+                    "src": "4097:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "deposit",
+                      "scope": 10769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10764,
+                        "name": "ElementaryTypeName",
+                        "src": "4125:7:30"
+                      }
+                    ],
+                    "id": 10765,
+                    "name": "VariableDeclaration",
+                    "src": "4125:15:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "owedDeposit",
+                      "scope": 10769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10766,
+                        "name": "ElementaryTypeName",
+                        "src": "4154:7:30"
+                      }
+                    ],
+                    "id": 10767,
+                    "name": "VariableDeclaration",
+                    "src": "4154:19:30"
+                  }
+                ],
+                "id": 10768,
+                "name": "ParameterList",
+                "src": "4052:131:30"
+              }
+            ],
+            "id": 10769,
+            "name": "FunctionDefinition",
+            "src": "3920:264:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "0f1ac495",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getAccountFlowInfo",
+              "scope": 10827,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get the aggregated flow info of the account\n @param token Super token address.\n @param account Account for the query."
+                },
+                "id": 10770,
+                "name": "StructuredDocumentation",
+                "src": "4190:151:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10771,
+                        "name": "UserDefinedTypeName",
+                        "src": "4383:16:30"
+                      }
+                    ],
+                    "id": 10772,
+                    "name": "VariableDeclaration",
+                    "src": "4383:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "account",
+                      "scope": 10785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10773,
+                        "name": "ElementaryTypeName",
+                        "src": "4415:7:30"
+                      }
+                    ],
+                    "id": 10774,
+                    "name": "VariableDeclaration",
+                    "src": "4415:15:30"
+                  }
+                ],
+                "id": 10775,
+                "name": "ParameterList",
+                "src": "4373:63:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "timestamp",
+                      "scope": 10785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10776,
+                        "name": "ElementaryTypeName",
+                        "src": "4497:7:30"
+                      }
+                    ],
+                    "id": 10777,
+                    "name": "VariableDeclaration",
+                    "src": "4497:17:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10778,
+                        "name": "ElementaryTypeName",
+                        "src": "4528:5:30"
+                      }
+                    ],
+                    "id": 10779,
+                    "name": "VariableDeclaration",
+                    "src": "4528:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "deposit",
+                      "scope": 10785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10780,
+                        "name": "ElementaryTypeName",
+                        "src": "4556:7:30"
+                      }
+                    ],
+                    "id": 10781,
+                    "name": "VariableDeclaration",
+                    "src": "4556:15:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "owedDeposit",
+                      "scope": 10785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 10782,
+                        "name": "ElementaryTypeName",
+                        "src": "4585:7:30"
+                      }
+                    ],
+                    "id": 10783,
+                    "name": "VariableDeclaration",
+                    "src": "4585:19:30"
+                  }
+                ],
+                "id": 10784,
+                "name": "ParameterList",
+                "src": "4483:122:30"
+              }
+            ],
+            "id": 10785,
+            "name": "FunctionDefinition",
+            "src": "4346:260:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "e8e7e2d1",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getNetFlow",
+              "scope": 10827,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get the net flow rate of the account\n @param token Super token address.\n @param account Account for the query.\n @return flowRate Flow rate."
+                },
+                "id": 10786,
+                "name": "StructuredDocumentation",
+                "src": "4612:181:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10795,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10787,
+                        "name": "UserDefinedTypeName",
+                        "src": "4827:16:30"
+                      }
+                    ],
+                    "id": 10788,
+                    "name": "VariableDeclaration",
+                    "src": "4827:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "account",
+                      "scope": 10795,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10789,
+                        "name": "ElementaryTypeName",
+                        "src": "4859:7:30"
+                      }
+                    ],
+                    "id": 10790,
+                    "name": "VariableDeclaration",
+                    "src": "4859:15:30"
+                  }
+                ],
+                "id": 10791,
+                "name": "ParameterList",
+                "src": "4817:63:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10795,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10792,
+                        "name": "ElementaryTypeName",
+                        "src": "4928:5:30"
+                      }
+                    ],
+                    "id": 10793,
+                    "name": "VariableDeclaration",
+                    "src": "4928:14:30"
+                  }
+                ],
+                "id": 10794,
+                "name": "ParameterList",
+                "src": "4927:16:30"
+              }
+            ],
+            "id": 10795,
+            "name": "FunctionDefinition",
+            "src": "4798:146:30"
+          },
+          {
+            "attributes": {
+              "functionSelector": "b4b333c6",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "deleteFlow",
+              "scope": 10827,
+              "stateMutability": "nonpayable",
+              "virtual": true,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Delete the flow between sender and receiver\n @param token Super token address.\n @param ctx Context bytes.\n @param receiver Flow receiver address.\n # App callbacks\n - AgreementTerminated\n   - agreementId - can be used in getFlowByID\n   - agreementData - abi.encode(address flowSender, address flowReceiver)\n NOTE:\n - Both flow sender and receiver may delete the flow.\n - If Sender account is insolvent or in critical state, a solvency agent may\n   also terminate the agreement.\n - Gas fee may be returned to the sender."
+                },
+                "id": 10796,
+                "name": "StructuredDocumentation",
+                "src": "4950:635:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10809,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10797,
+                        "name": "UserDefinedTypeName",
+                        "src": "5619:16:30"
+                      }
+                    ],
+                    "id": 10798,
+                    "name": "VariableDeclaration",
+                    "src": "5619:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "sender",
+                      "scope": 10809,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10799,
+                        "name": "ElementaryTypeName",
+                        "src": "5651:7:30"
+                      }
+                    ],
+                    "id": 10800,
+                    "name": "VariableDeclaration",
+                    "src": "5651:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "receiver",
+                      "scope": 10809,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10801,
+                        "name": "ElementaryTypeName",
+                        "src": "5675:7:30"
+                      }
+                    ],
+                    "id": 10802,
+                    "name": "VariableDeclaration",
+                    "src": "5675:16:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "ctx",
+                      "scope": 10809,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10803,
+                        "name": "ElementaryTypeName",
+                        "src": "5701:5:30"
+                      }
+                    ],
+                    "id": 10804,
+                    "name": "VariableDeclaration",
+                    "src": "5701:18:30"
+                  }
+                ],
+                "id": 10805,
+                "name": "ParameterList",
+                "src": "5609:116:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "newCtx",
+                      "scope": 10809,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10806,
+                        "name": "ElementaryTypeName",
+                        "src": "5767:5:30"
+                      }
+                    ],
+                    "id": 10807,
+                    "name": "VariableDeclaration",
+                    "src": "5767:19:30"
+                  }
+                ],
+                "id": 10808,
+                "name": "ParameterList",
+                "src": "5766:21:30"
+              }
+            ],
+            "id": 10809,
+            "name": "FunctionDefinition",
+            "src": "5590:198:30"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "FlowUpdated"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Flow updated event.\n @param token Super token address.\n @param sender Flow sender address.\n @param receiver Flow recipient address.\n @param flowRate Flow rate in amount per second for this flow.\n @param flowRate Total flow rate in amount per second for the sender.\n @param flowRate Total flow rate in amount per second for the receiver.\n @param userData The user provided data."
+                },
+                "id": 10810,
+                "name": "StructuredDocumentation",
+                "src": "5795:452:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "token",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ISuperfluidToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "ISuperfluidToken",
+                          "referencedDeclaration": 12797,
+                          "type": "contract ISuperfluidToken"
+                        },
+                        "id": 10811,
+                        "name": "UserDefinedTypeName",
+                        "src": "6281:16:30"
+                      }
+                    ],
+                    "id": 10812,
+                    "name": "VariableDeclaration",
+                    "src": "6281:30:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "sender",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10813,
+                        "name": "ElementaryTypeName",
+                        "src": "6322:7:30"
+                      }
+                    ],
+                    "id": 10814,
+                    "name": "VariableDeclaration",
+                    "src": "6322:22:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "receiver",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10815,
+                        "name": "ElementaryTypeName",
+                        "src": "6355:7:30"
+                      }
+                    ],
+                    "id": 10816,
+                    "name": "VariableDeclaration",
+                    "src": "6355:24:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "flowRate",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int96",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int96",
+                          "type": "int96"
+                        },
+                        "id": 10817,
+                        "name": "ElementaryTypeName",
+                        "src": "6390:5:30"
+                      }
+                    ],
+                    "id": 10818,
+                    "name": "VariableDeclaration",
+                    "src": "6390:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "totalSenderFlowRate",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 10819,
+                        "name": "ElementaryTypeName",
+                        "src": "6415:6:30"
+                      }
+                    ],
+                    "id": 10820,
+                    "name": "VariableDeclaration",
+                    "src": "6415:26:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "totalReceiverFlowRate",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 10821,
+                        "name": "ElementaryTypeName",
+                        "src": "6452:6:30"
+                      }
+                    ],
+                    "id": 10822,
+                    "name": "VariableDeclaration",
+                    "src": "6452:28:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "userData",
+                      "scope": 10826,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10823,
+                        "name": "ElementaryTypeName",
+                        "src": "6491:5:30"
+                      }
+                    ],
+                    "id": 10824,
+                    "name": "VariableDeclaration",
+                    "src": "6491:14:30"
+                  }
+                ],
+                "id": 10825,
+                "name": "ParameterList",
+                "src": "6270:242:30"
+              }
+            ],
+            "id": 10826,
+            "name": "EventDefinition",
+            "src": "6253:260:30"
+          }
+        ],
+        "id": 10827,
+        "name": "ContractDefinition",
+        "src": "292:6224:30"
+      }
+    ],
+    "id": 10828,
+    "name": "SourceUnit",
+    "src": "35:6482:30"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.2",
+  "updatedAt": "2021-09-13T12:56:05.591Z",
+  "devdoc": {
+    "author": "Superfluid",
+    "details": "Superfluid's constant flow agreement interface",
+    "events": {
+      "FlowUpdated(address,address,address,int96,int256,int256,bytes)": {
+        "details": "Flow updated event.",
+        "params": {
+          "flowRate": "Total flow rate in amount per second for the receiver.",
+          "receiver": "Flow recipient address.",
+          "sender": "Flow sender address.",
+          "token": "Super token address.",
+          "userData": "The user provided data."
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "agreementType()": {
+        "details": "ISuperAgreement.agreementType implementation"
+      },
+      "createFlow(address,address,int96,bytes)": {
+        "details": "Create a flow betwen sender and receiver.",
+        "params": {
+          "flowRate": "New flow rate in amount per second. # App callbacks - AgreementCreated   - agreementId - can be used in getFlowByID   - agreementData - abi.encode(address flowSender, address flowReceiver) NOTE: - A deposit is taken as safety margin for the solvency agents. - A extra gas fee may be taken to pay for solvency agent liquidations.",
+          "receiver": "Flow receiver address.",
+          "token": "Super token address."
+        }
+      },
+      "deleteFlow(address,address,address,bytes)": {
+        "details": "Delete the flow between sender and receiver",
+        "params": {
+          "ctx": "Context bytes.",
+          "receiver": "Flow receiver address. # App callbacks - AgreementTerminated   - agreementId - can be used in getFlowByID   - agreementData - abi.encode(address flowSender, address flowReceiver) NOTE: - Both flow sender and receiver may delete the flow. - If Sender account is insolvent or in critical state, a solvency agent may   also terminate the agreement. - Gas fee may be returned to the sender.",
+          "token": "Super token address."
+        }
+      },
+      "getAccountFlowInfo(address,address)": {
+        "details": "Get the aggregated flow info of the account",
+        "params": {
+          "account": "Account for the query.",
+          "token": "Super token address."
+        }
+      },
+      "getDepositRequiredForFlowRate(address,int96)": {
+        "details": "Get the deposit required for creating the flow",
+        "params": {
+          "flowRate": "Flow rate to be tested"
+        }
+      },
+      "getFlow(address,address,address)": {
+        "details": "Get the flow data between `sender` and `receiver`.",
+        "params": {
+          "receiver": "Flow sender.",
+          "sender": "Flow receiver.",
+          "token": "Super token address."
+        },
+        "returns": {
+          "deposit": "The amount of deposit the flow.",
+          "flowRate": "The flow rate.",
+          "owedDeposit": "The amount of owed deposit of the flow.",
+          "timestamp": "Timestamp of when the flow is updated."
+        }
+      },
+      "getFlowByID(address,bytes32)": {
+        "details": "Get flow data using agreement ID",
+        "params": {
+          "agreementId": "The agreement ID.",
+          "token": "Super token address."
+        },
+        "returns": {
+          "deposit": "The amount of deposit the flow.",
+          "flowRate": "The flow rate.",
+          "owedDeposit": "The amount of owed deposit of the flow.",
+          "timestamp": "Timestamp of when the flow is updated."
+        }
+      },
+      "getMaximumFlowRateFromDeposit(address,uint256)": {
+        "details": "Get the maximum flow rate allowed with the deposit",
+        "params": {
+          "deposit": "Deposit amount used for creating the flow"
+        }
+      },
+      "getNetFlow(address,address)": {
+        "details": "Get the net flow rate of the account",
+        "params": {
+          "account": "Account for the query.",
+          "token": "Super token address."
+        },
+        "returns": {
+          "flowRate": "Flow rate."
+        }
+      },
+      "initialize()": {
+        "details": "Initialize the agreement contract"
+      },
+      "realtimeBalanceOf(address,address,uint256)": {
+        "details": "Calculate the real-time balance for the account of this agreement class.",
+        "params": {
+          "account": "Account the state belongs to",
+          "time": "Future time used for the calculation."
+        },
+        "returns": {
+          "deposit": "Account deposit amount of this agreement.",
+          "dynamicBalance": "Dynamic balance portion of real-time balance of this agreement.",
+          "owedDeposit": "Account owed deposit amount of this agreement."
+        }
+      },
+      "updateFlow(address,address,int96,bytes)": {
+        "details": "Update the flow rate between sender and receiver.",
+        "params": {
+          "flowRate": "New flow rate in amount per second. # App callbacks - AgreementUpdated   - agreementId - can be used in getFlowByID   - agreementData - abi.encode(address flowSender, address flowReceiver) NOTE: - Only the flow sender may update the flow rate. - Even if the flow rate is zero, the flow is not deleted from the system. - Deposit amount will be adjusted accordingly. - No new gas fee is charged.",
+          "receiver": "Flow receiver address.",
+          "token": "Super token address."
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
