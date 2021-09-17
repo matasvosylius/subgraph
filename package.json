@@ -1,5 +1,5 @@
 {
-    "name": "bsc-test-steam",
+    "name": "subgraph",
     "version": "0.0.1",
     "description": "Subgraph for the Ethereum contracts",
     "license": "MIT",
